@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SunExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApiUsers">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Crew">
+          <Key>
+            <PropertyRef Name="CrewID" />
+          </Key>
+          <Property Name="CrewID" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Airline" Type="nvarchar" MaxLength="50" />
+          <Property Name="Airport" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="10" />
+          <Property Name="StartDate" Type="int" />
+          <Property Name="EndDate" Type="int" />
+        </EntityType>
+        <EntityType Name="FlightSchedule">
+          <Key>
+            <PropertyRef Name="FlightScheduleID" />
+          </Key>
+          <Property Name="FlightScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlightNum" Type="int" />
+          <Property Name="Airline" Type="nvarchar" MaxLength="10" />
+          <Property Name="OriginatingAirport" Type="nvarchar" MaxLength="10" />
+          <Property Name="DestinationAirport" Type="nvarchar" MaxLength="10" />
+          <Property Name="TourOperator" Type="bit" />
+          <Property Name="DepartureTime" Type="time" Precision="0" />
+          <Property Name="ArrivalTime" Type="time" Precision="0" />
+          <Property Name="SectorLength" Type="time" Precision="0" />
+          <Property Name="EffectiveStartDate" Type="int" />
+          <Property Name="EffectiveEndDate" Type="int" />
+        </EntityType>
+        <EntityType Name="FlightScheduleCrew">
+          <Key>
+            <PropertyRef Name="FlightScheduleCrewID" />
+          </Key>
+          <Property Name="FlightScheduleCrewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CrewID" Type="nvarchar" MaxLength="50" />
+          <Property Name="FlightScheduleID" Type="int" />
+        </EntityType>
+        <EntityType Name="FlightScheduleDayOfWeek">
+          <Key>
+            <PropertyRef Name="DayID" />
+            <PropertyRef Name="FlightScheduleID" />
+          </Key>
+          <Property Name="DayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WeekDay" Type="varchar" MaxLength="50" />
+          <Property Name="IsSchedule" Type="bit" />
+          <Property Name="Currency" Type="varchar" MaxLength="5" />
+          <Property Name="SpendPerHead" Type="int" />
+          <Property Name="IncentiveTarget" Type="int" />
+          <Property Name="FlightScheduleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PostFlight">
+          <Key>
+            <PropertyRef Name="PostFlightID" />
+          </Key>
+          <Property Name="PostFlightID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlightNum" Type="int" />
+          <Property Name="OriginatingAirport" Type="nvarchar" MaxLength="10" />
+          <Property Name="DestinationAirport" Type="nvarchar" MaxLength="10" />
+          <Property Name="Airline" Type="nvarchar" MaxLength="10" />
+          <Property Name="FlightDate" Type="int" />
+          <Property Name="PassengerCount" Type="int" />
+          <Property Name="DepartureTime" Type="time" Precision="0" />
+          <Property Name="ArrivalTime" Type="time" Precision="0" />
+          <Property Name="AircraftRegistrationNo" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PostFlightCrew">
+          <Key>
+            <PropertyRef Name="PostFlightCrewID" />
+          </Key>
+          <Property Name="PostFlightCrewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CrewID" Type="varchar" MaxLength="50" />
+          <Property Name="PostFlightID" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityContainer Name="SunExpressModelStoreContainer">
+          <EntitySet Name="ApiUsers" EntityType="Self.ApiUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Crew" EntityType="Self.Crew" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlightSchedule" EntityType="Self.FlightSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlightScheduleCrew" EntityType="Self.FlightScheduleCrew" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlightScheduleDayOfWeek" EntityType="Self.FlightScheduleDayOfWeek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostFlight" EntityType="Self.PostFlight" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostFlightCrew" EntityType="Self.PostFlightCrew" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SunExpressModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SunExpressEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApiUsers" EntityType="SunExpressModel.ApiUsers" />
+          <EntitySet Name="Crew" EntityType="SunExpressModel.Crew" />
+          <EntitySet Name="FlightSchedule" EntityType="SunExpressModel.FlightSchedule" />
+          <EntitySet Name="PostFlight" EntityType="SunExpressModel.PostFlight" />
+          <EntitySet Name="PostFlightCrew" EntityType="SunExpressModel.PostFlightCrew" />
+          <EntitySet Name="sysdiagrams" EntityType="SunExpressModel.sysdiagrams" />
+          <EntitySet Name="FlightScheduleCrew" EntityType="SunExpressModel.FlightScheduleCrew" />
+          <EntitySet Name="FlightScheduleDayOfWeek" EntityType="SunExpressModel.FlightScheduleDayOfWeek" />
+        </EntityContainer>
+        <EntityType Name="ApiUsers">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Crew">
+          <Key>
+            <PropertyRef Name="CrewID" />
+          </Key>
+          <Property Name="CrewID" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Airline" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Airport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="Int32" />
+          <Property Name="EndDate" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FlightSchedule">
+          <Key>
+            <PropertyRef Name="FlightScheduleID" />
+          </Key>
+          <Property Name="FlightScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlightNum" Type="Int32" />
+          <Property Name="Airline" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="OriginatingAirport" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DestinationAirport" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TourOperator" Type="Boolean" />
+          <Property Name="DepartureTime" Type="Time" Precision="0" />
+          <Property Name="ArrivalTime" Type="Time" Precision="0" />
+          <Property Name="SectorLength" Type="Time" Precision="0" />
+          <Property Name="EffectiveStartDate" Type="Int32" />
+          <Property Name="EffectiveEndDate" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PostFlight">
+          <Key>
+            <PropertyRef Name="PostFlightID" />
+          </Key>
+          <Property Name="PostFlightID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlightNum" Type="Int32" />
+          <Property Name="OriginatingAirport" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DestinationAirport" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Airline" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FlightDate" Type="Int32" />
+          <Property Name="PassengerCount" Type="Int32" />
+          <Property Name="DepartureTime" Type="Time" Precision="0" />
+          <Property Name="ArrivalTime" Type="Time" Precision="0" />
+          <Property Name="AircraftRegistrationNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PostFlightCrew">
+          <Key>
+            <PropertyRef Name="PostFlightCrewID" />
+          </Key>
+          <Property Name="PostFlightCrewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CrewID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostFlightID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="FlightScheduleCrew">
+          <Key>
+            <PropertyRef Name="FlightScheduleCrewID" />
+          </Key>
+          <Property Name="FlightScheduleCrewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CrewID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FlightScheduleID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FlightScheduleDayOfWeek">
+          <Key>
+            <PropertyRef Name="DayID" />
+            <PropertyRef Name="FlightScheduleID" />
+          </Key>
+          <Property Name="DayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WeekDay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsSchedule" Type="Boolean" />
+          <Property Name="Currency" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SpendPerHead" Type="Int32" />
+          <Property Name="IncentiveTarget" Type="Int32" />
+          <Property Name="FlightScheduleID" Type="Int32" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SunExpressModelStoreContainer" CdmEntityContainer="SunExpressEntities">
+          <EntitySetMapping Name="ApiUsers">
+            <EntityTypeMapping TypeName="SunExpressModel.ApiUsers">
+              <MappingFragment StoreEntitySet="ApiUsers">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Crew">
+            <EntityTypeMapping TypeName="SunExpressModel.Crew">
+              <MappingFragment StoreEntitySet="Crew">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Airport" ColumnName="Airport" />
+                <ScalarProperty Name="Airline" ColumnName="Airline" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CrewID" ColumnName="CrewID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlightSchedule">
+            <EntityTypeMapping TypeName="SunExpressModel.FlightSchedule">
+              <MappingFragment StoreEntitySet="FlightSchedule">
+                <ScalarProperty Name="EffectiveEndDate" ColumnName="EffectiveEndDate" />
+                <ScalarProperty Name="EffectiveStartDate" ColumnName="EffectiveStartDate" />
+                <ScalarProperty Name="SectorLength" ColumnName="SectorLength" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+                <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
+                <ScalarProperty Name="TourOperator" ColumnName="TourOperator" />
+                <ScalarProperty Name="DestinationAirport" ColumnName="DestinationAirport" />
+                <ScalarProperty Name="OriginatingAirport" ColumnName="OriginatingAirport" />
+                <ScalarProperty Name="Airline" ColumnName="Airline" />
+                <ScalarProperty Name="FlightNum" ColumnName="FlightNum" />
+                <ScalarProperty Name="FlightScheduleID" ColumnName="FlightScheduleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostFlight">
+            <EntityTypeMapping TypeName="SunExpressModel.PostFlight">
+              <MappingFragment StoreEntitySet="PostFlight">
+                <ScalarProperty Name="AircraftRegistrationNo" ColumnName="AircraftRegistrationNo" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+                <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
+                <ScalarProperty Name="PassengerCount" ColumnName="PassengerCount" />
+                <ScalarProperty Name="FlightDate" ColumnName="FlightDate" />
+                <ScalarProperty Name="Airline" ColumnName="Airline" />
+                <ScalarProperty Name="DestinationAirport" ColumnName="DestinationAirport" />
+                <ScalarProperty Name="OriginatingAirport" ColumnName="OriginatingAirport" />
+                <ScalarProperty Name="FlightNum" ColumnName="FlightNum" />
+                <ScalarProperty Name="PostFlightID" ColumnName="PostFlightID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostFlightCrew">
+            <EntityTypeMapping TypeName="SunExpressModel.PostFlightCrew">
+              <MappingFragment StoreEntitySet="PostFlightCrew">
+                <ScalarProperty Name="PostFlightID" ColumnName="PostFlightID" />
+                <ScalarProperty Name="CrewID" ColumnName="CrewID" />
+                <ScalarProperty Name="PostFlightCrewID" ColumnName="PostFlightCrewID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SunExpressModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlightScheduleCrew">
+            <EntityTypeMapping TypeName="SunExpressModel.FlightScheduleCrew">
+              <MappingFragment StoreEntitySet="FlightScheduleCrew">
+                <ScalarProperty Name="FlightScheduleID" ColumnName="FlightScheduleID" />
+                <ScalarProperty Name="CrewID" ColumnName="CrewID" />
+                <ScalarProperty Name="FlightScheduleCrewID" ColumnName="FlightScheduleCrewID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlightScheduleDayOfWeek">
+            <EntityTypeMapping TypeName="SunExpressModel.FlightScheduleDayOfWeek">
+              <MappingFragment StoreEntitySet="FlightScheduleDayOfWeek">
+                <ScalarProperty Name="FlightScheduleID" ColumnName="FlightScheduleID" />
+                <ScalarProperty Name="IncentiveTarget" ColumnName="IncentiveTarget" />
+                <ScalarProperty Name="SpendPerHead" ColumnName="SpendPerHead" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="IsSchedule" ColumnName="IsSchedule" />
+                <ScalarProperty Name="WeekDay" ColumnName="WeekDay" />
+                <ScalarProperty Name="DayID" ColumnName="DayID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

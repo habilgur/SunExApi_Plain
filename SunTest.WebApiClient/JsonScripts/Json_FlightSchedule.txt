@@ -1,0 +1,73 @@
+
+
+
+ UrlPart:
+---------------------------------------------------------------
+	 /api/FlightSchedule/Post?user=test&pass=test
+
+ Body:
+---------------------------------------------------------------
+
+
+{
+   "FlightScheduleData":
+	  {
+		 "FlightSchedule":[{
+			"FlightNum":"123",
+			"Airline":"SXS",
+			"OriginatingAirport":"AYT",
+			"DestinationAirport":"TXL",
+			"TourOperator":"true",
+			"DepartureTime":"08:00:00",
+			"ArrivalTime":"11:35:00",
+			"DayOfWeekMask":{"Mon": {
+				  "IsScheduled": "true",
+				  "Currency": "EUR",
+				  "SpendPerHead": "1",
+				  "IncentiveTarget": "1"
+			   },
+			   "Tue": {
+				  "IsScheduled": "true",
+				  "Currency": "EUR",
+				  "SpendPerHead": "1",
+				  "IncentiveTarget": "1"
+			   },
+			   "Wed": {
+				  "IsScheduled": "true",
+				  "Currency": "EUR",
+				  "SpendPerHead": "1",
+				  "IncentiveTarget": "1"
+			   },
+			   "Thu": {
+				  "IsScheduled": "true",
+				  "Currency": "EUR",
+				  "SpendPerHead": "1",
+				  "IncentiveTarget": "1"
+			   },
+			   "Fri": {
+				  "IsScheduled": "true",
+				  "Currency": "EUR",
+				  "SpendPerHead": "1",
+				  "IncentiveTarget": "1"
+			   },
+			   "Sat": {
+				  "IsScheduled": "true",
+				  "Currency": "EUR",
+				  "SpendPerHead": "1",
+				  "IncentiveTarget": "1"
+			   },
+			   "Sun": {
+				  "IsScheduled": "true",
+				  "Currency": "EUR",
+				  "SpendPerHead": "1",
+				  "IncentiveTarget": "1"
+			   }
+			},
+			"SectorLength":"03:35:00",
+			"EffectiveStartDate":"2019-02-20Z",
+			"EffectiveEndDate":"2019-02-20Z"
+		 }
+		 ]
+	  }
+   
+}

@@ -1,0 +1,35 @@
+ 
+ 
+ UrlPart:
+---------------------------------------------------------------
+     /api/PostFlight/Post?user=test&pass=test
+
+ Body:
+---------------------------------------------------------------
+
+{
+   "PostFlightData": 
+      {
+         "PostFlight": [{
+            "FlightNum": "123",
+            "OriginatingAirport": "ATH",
+            "DestinationAirport": "DUS",
+            "Airline": "THY",
+            "FlightDate": "19.09.2019Z",
+            "PassengerCount": "188",
+            "DepartureTime": "01:00:00",
+            "ArrivalTime": "08:00:00",
+            "AircraftRegistrationNo": "TC-SOA",
+            "Crews": {
+               "CrewID": [
+                  "000001",
+                  "000111",
+                  "000112"
+               ]
+            }
+         }
+         ]
+      }
+   
+}
+

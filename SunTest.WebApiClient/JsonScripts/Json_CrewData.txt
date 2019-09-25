@@ -1,0 +1,45 @@
+
+ UrlPart:
+---------------------------------------------------------------
+	 /api/CrewData/Post?user=test&pass=test
+
+ Body:
+---------------------------------------------------------------
+
+
+{ 
+   "CrewData":{ 
+      "Crew":[ 
+         { 
+            "CrewId":"000111",
+            "FirstName":"SAM",
+            "LastName":"BROWN",
+            "Airline":"SXS",
+            "Airport":"AYT",
+            "Title":"SE",
+            "StartDate":"2019-07-01Z",
+            "EndDate":"2019-08-01Z"
+         },
+         { 
+            "CrewId":"000222",
+            "FirstName":"JOHN",
+            "LastName":"WHITE",
+            "Airline":"SXS",
+            "Airport":"AYT",
+            "Title":"SE",
+            "StartDate":"2019-07-01Z",
+            "EndDate":"2019-08-01Z"
+         },
+         { 
+            "CrewId":"000333",
+            "FirstName":"CHARLES",
+            "LastName":"BARKLEY",
+            "Airline":"SXS",
+            "Airport":"AYT",
+            "Title":"SE",
+            "StartDate":"2019-07-01Z",
+            "EndDate":"2019-08-01Z"
+         }
+      ]
+   }
+}
